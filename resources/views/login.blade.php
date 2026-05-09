@@ -122,13 +122,10 @@
         <button class="btn">Login</button>
     </form>
 
-    <div class="extra">
-        <a href="#">Forgot Password?</a>
-        <a href="#">Help</a>
-    </div>
+   
 
     <div class="signup-link">
-        Don't have an account? <a href="{{ route('homepage') }}">Sign Up</a>
+        Don't have an account? <a href="{{ route('homepage') }}">home</a>
     </div>
 </div>
 

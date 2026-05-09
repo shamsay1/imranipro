@@ -162,62 +162,158 @@ body {
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-    <span class="toggle-btn" onclick="toggleSidebar()">☰</span>
 
-    <h2>Admin</h2>
+    <!-- Toggle Button -->
+    <span class="toggle-btn" onclick="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+    </span>
+
+    <!-- Profile Section -->
+    <div class="text-center mb-4">
+
+       
+
+        @if(Auth::user()->role=="admin")
+            <h2 style="font-family:'Times New Roman', Times, serif;">
+                Admin
+            </h2>
+
+        @elseif(Auth::user()->role=="seller")
+            <h2 style="font-family:'Times New Roman', Times, serif;">
+                Seller
+            </h2>
+        @endif
+
+    </div>
 
     <ul>
+
         @if(Auth::user()->role=="admin")
-        <p class="menu-title">MAIN</p>
-        <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        {{-- <li><a href="#"><i class="fa fa-chart-line"></i> Analytics</a></li> --}}
 
-        <p class="menu-title">MANAGEMENT</p>
+            <!-- MAIN -->
+            <p class="menu-title">MAIN</p>
 
-        <li><a href="{{ route('buyers.index') }}"><i class="fa fa-users"></i> Manage Users</a></li>
-        <li><a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Manage Products</a></li>
-        <li><a href="{{ route('orders') }}"><i class="fa fa-file"></i> Manage Orders</a></li>
-        <p class="menu-title">REPORT</p>
+            <li>
+                <a href="{{ route('dashboard') }}">
+                    <i class="fa fa-gauge-high"></i>
+                    Dashboard
+                </a>
+            </li>
 
-        <li><a href="#"><i class="fa fa-chart-line"></i> Analytics</a></li>
-        
+            <!-- MANAGEMENT -->
+            <p class="menu-title">MANAGEMENT</p>
+
+            <li>
+                <a href="{{ route('buyers.index') }}">
+                    <i class="fa fa-users"></i>
+                    Manage Users
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('products.index') }}">
+                    <i class="fa fa-box-open"></i>
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('orders') }}">
+                    <i class="fa fa-cart-shopping"></i>
+                    Manage Orders
+                </a>
+            </li>
+
+            <!-- REPORT -->
+            <p class="menu-title">REPORT</p>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-chart-column"></i>
+                    Analytics
+                </a>
+            </li>
+
         @elseif(Auth::user()->role=="seller")
-        <p class="menu-title">MAIN</p>
-        <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
-        <p class="menu-title">MANAGEMENT</p>
-       
-        <li><a href="{{ route('buyers.index') }}"><i class="fa fa-users"></i> Manage Users</a></li>
-        <li><a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Manage Products</a></li>
-        <li><a href="{{ route('orders') }}"><i class="fa fa-file"></i> View Users Orders</a></li>
-        <p class="menu-title">PAYMENT</p>
-       
-        <li><a href="#"><i class="fa fa-users"></i> Verify payments</a></li>
+
+            <!-- MAIN -->
+            <p class="menu-title">MAIN</p>
+
+            <li>
+                <a href="{{ route('dashboard') }}">
+                    <i class="fa fa-gauge-high"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <!-- MANAGEMENT -->
+            <p class="menu-title">MANAGEMENT</p>
+
+            <li>
+                <a href="{{ route('products.index') }}">
+                    <i class="fa fa-box"></i>
+                    Manage Products
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('orders') }}">
+                    <i class="fa fa-receipt"></i>
+                    Users Orders
+                </a>
+            </li>
+
+            <!-- PAYMENT -->
+            <p class="menu-title">PAYMENT</p>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-money-check-dollar"></i>
+                    Verify Payments
+                </a>
+            </li>
+
         @endif
+
+        <!-- SETTINGS -->
         <p class="menu-title">SETTINGS</p>
 
-        <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
         <li>
-    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <i class="fa fa-gear"></i> Logout
-    </a>
+            <a href="#">
+                <i class="fa fa-gear"></i>
+                Settings
+            </a>
+        </li>
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
-</li>
+        <!-- LOGOUT -->
+        <li>
+            <a href="#"
+               onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+
+                <i class="fa fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+            <form id="logout-form"
+                  action="{{ route('logout') }}"
+                  method="POST"
+                  style="display:none;">
+                @csrf
+            </form>
+        </li>
+
     </ul>
-</div>
 
+</div>
 <!-- MAIN -->
 <div class="main">
 
     <!-- NAVBAR -->
-   <div class="navbar">
+   <div class="navbar" style="height: 60px">
+     <h2 style="font-family: 'Times New Roman', Times, serif;color: green;font-size: 25px;">Zanzibar Online marketing System</h2>
 
-    <!-- SEARCH -->
-    <input class="form-control w-25" type="text" placeholder="Search...">
-
-    <!-- NOTIFICATION ICON -->
+ 
     <div style="position:relative; margin-left:auto; cursor:pointer;">
 
         <i class="fa-solid fa-bell" style="font-size:20px;"></i>

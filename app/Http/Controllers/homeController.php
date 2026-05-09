@@ -25,7 +25,9 @@ class homeController extends Controller
     public function dashboard(){
         $customer = SystemUser::where('role','customer')->count();
         $total_request = Order::where('status','pending')->count();
-        return view("dashboard",compact('customer','total_request'));
+        $total_products = Product::where("user_id",Auth::user()->id)->count();
+        $orders = Order::where("status","pending")->take(5)->get();
+        return view("dashboard",compact('orders','total_products','customer','total_request'));
     }
     public function login(Request $request){
         $request->validate([
