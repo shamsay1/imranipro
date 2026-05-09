@@ -15,7 +15,7 @@
         <h4 class="mb-0">All Users</h4>
     </div>
     <button class="btn btn-success btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#userModal">
-        + Add Buyer
+        + Add Seller
     </button>
     <!-- USER MODAL -->
 <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
@@ -24,7 +24,7 @@
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title">Add Buyer</h5>
+        <h5 class="modal-title">Add Seller</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -74,6 +74,8 @@
                 </div>
 
             </div>
+                    <input type="hidden" name="role" value="seller">
+
 
         </div>
 
@@ -188,6 +190,7 @@
                         <option>Female</option>
                     </select>
                 </div>
+
 
             </div>
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     public function index(){
-        $buyers = SystemUser::where('role','buyer')->get();
+        $buyers = SystemUser::where('role','seller')->get();
         return view('buyers',compact('buyers'));
     }
     public function store(Request $request)
@@ -31,6 +31,7 @@ class UsersController extends Controller
         'gender' => $request->gender,
         'password' => bcrypt($request->password),
         'role' => $request->role,
+        
     ]);
 
     return back()->with('success', 'Registration completed sucessfully!');

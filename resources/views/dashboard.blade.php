@@ -3,20 +3,15 @@
 @section('content')
 
 <style>
-    /* ✅ Background iwe nyeupe */
     body {
         background-color: #ffffff !important;
     }
-
-    /* 🔥 Top Card (flat style) */
     .no-radius {
         border-radius: 0 !important;
         border: 1px solid #e5e5e5;
         box-shadow: none;
         padding: 0;
     }
-
-    /* 🔥 Kila column iwe na border kati kati */
     .top-cards .col {
         padding: 20px;
         border-right: 1px solid #e5e5e5;
@@ -47,24 +42,22 @@
 </style>
 
 <div class="container mt-4">
-
-    <!-- 🔥 ONE BIG CARD -->
     <div class="card no-radius mb-4">
         <div class="row text-center top-cards m-0">
 
-            <div class="col">
-                <h6>Total Users</h6>
-                <h4>7,654</h4>
+            <div class="col"Users>
+                <h6>Registered Customer </h6>
+                <h4>{{ $customer }}</h4>
             </div>
 
             <div class="col">
                 <h6>Orders</h6>
-                <h4>5,235</h4>
+                <h4>{{ $total_request }}</h4>
             </div>
 
             <div class="col">
                 <h6>Revenue</h6>
-                <h4>$8,523</h4>
+                <h4>10,000 tzs</h4>
             </div>
 
             <div class="col">

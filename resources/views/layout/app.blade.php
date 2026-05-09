@@ -167,17 +167,32 @@ body {
     <h2>Admin</h2>
 
     <ul>
+        @if(Auth::user()->role=="admin")
         <p class="menu-title">MAIN</p>
-
-        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-chart-line"></i> Analytics</a></li>
+        <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
+        {{-- <li><a href="#"><i class="fa fa-chart-line"></i> Analytics</a></li> --}}
 
         <p class="menu-title">MANAGEMENT</p>
 
-        <li><a href="{{ route('buyers.index') }}"><i class="fa fa-users"></i> Users</a></li>
-        <li><a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Product</a></li>
-        <li><a href="{{ route('orders') }}"><i class="fa fa-file"></i> Orders</a></li>
+        <li><a href="{{ route('buyers.index') }}"><i class="fa fa-users"></i> Manage Users</a></li>
+        <li><a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Manage Products</a></li>
+        <li><a href="{{ route('orders') }}"><i class="fa fa-file"></i> Manage Orders</a></li>
+        <p class="menu-title">REPORT</p>
 
+        <li><a href="#"><i class="fa fa-chart-line"></i> Analytics</a></li>
+        
+        @elseif(Auth::user()->role=="seller")
+        <p class="menu-title">MAIN</p>
+        <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home</a></li>
+        <p class="menu-title">MANAGEMENT</p>
+       
+        <li><a href="{{ route('buyers.index') }}"><i class="fa fa-users"></i> Manage Users</a></li>
+        <li><a href="{{ route('products.index') }}"><i class="fa fa-file"></i> Manage Products</a></li>
+        <li><a href="{{ route('orders') }}"><i class="fa fa-file"></i> View Users Orders</a></li>
+        <p class="menu-title">PAYMENT</p>
+       
+        <li><a href="#"><i class="fa fa-users"></i> Verify payments</a></li>
+        @endif
         <p class="menu-title">SETTINGS</p>
 
         <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>

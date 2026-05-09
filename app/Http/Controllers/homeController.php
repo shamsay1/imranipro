@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\SystemUser;
 use Illuminate\Http\Request;
@@ -22,7 +23,9 @@ class homeController extends Controller
         return view("login");
     }
     public function dashboard(){
-        return view("dashboard");
+        $customer = SystemUser::where('role','customer')->count();
+        $total_request = Order::where('status','pending')->count();
+        return view("dashboard",compact('customer','total_request'));
     }
     public function login(Request $request){
         $request->validate([
@@ -34,7 +37,7 @@ class homeController extends Controller
             $user = Auth::user();
             if($user->role == "admin"){
                 return redirect()->route('dashboard');
-            }elseif($user->role == "buyer"){
+            }elseif($user->role == "seller"){
             return redirect()->route('dashboard');
 
             }elseif($user->role=="customer"){
